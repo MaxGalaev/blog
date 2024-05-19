@@ -6,5 +6,4 @@ import (
 
 func MyHandler(w http.ResponseWriter, r *http.Request) {
 	RenderTemplate("../templates/layout.html", w)
-
 }
