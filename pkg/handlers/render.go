@@ -20,7 +20,7 @@ func RenderTemplate(templatepath string, w http.ResponseWriter) error {
 		log.Println(err.Error())
 	}
 	// execute template
-	err = post_template.Execute(w, nil)
+	err = post_template.Execute(w, ParseMarkdown("../markdown/my_first_blog_post.md"))
 	if err != nil {
 		log.Println(err.Error())
 	}
@@ -32,9 +32,9 @@ func ParseMarkdown(MarkdownPath string) BlogPost {
 	if err != nil {
 		log.Println(err.Error())
 	}
-	title := string(markdownfile[0])
+	//title := string(markdownfile[0])
 	content := strings.Split(string(markdownfile), "___")
-	blogpost := BlogPost{Title: title, Content: content[1]}
+	blogpost := BlogPost{Title: content[0], Content: content[1]}
 	return blogpost
 
 }
